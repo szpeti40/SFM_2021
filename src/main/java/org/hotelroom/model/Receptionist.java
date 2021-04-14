@@ -1,4 +1,4 @@
-package org.example;
+package org.hotelroom.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

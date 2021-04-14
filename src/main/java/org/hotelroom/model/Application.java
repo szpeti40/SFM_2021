@@ -1,4 +1,4 @@
-package org.example;
+package org.hotelroom.model;
 
 import java.sql.SQLException;
 import javax.persistence.EntityManager;

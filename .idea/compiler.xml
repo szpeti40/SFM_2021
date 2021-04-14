@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="HotelRoom_LovelyDinamite" />
+        <module name="JavaFX11" />
       </profile>
     </annotationProcessing>
   </component>

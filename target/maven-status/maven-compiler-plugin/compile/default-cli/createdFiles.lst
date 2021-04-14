@@ -1,0 +1,5 @@
+org\hotelroom\model\Receptionist.class
+org\hotelroom\model\Rooms.class
+org\hotelroom\model\Application.class
+org\hotelroom\controller\FXMLSceneController.class
+org\hotelroom\model\Guest.class
