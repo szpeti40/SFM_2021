@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="HotelRoom_LovelyDinamite" />
         <module name="JavaFX11" />
+        <module name="SFM_2021" />
       </profile>
     </annotationProcessing>
   </component>
