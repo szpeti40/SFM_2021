@@ -6,16 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="HotelRoom_LovelyDinamite" />
-<<<<<<< HEAD
-        <module name="JavaFX11" />
-        <module name="SFM_2021" />
-=======
->>>>>>> b42137d60336a790430f8271eb42870669c38e47
+        <module name="hotelRoomBooking" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="JavaFX11" target="11" />
+      <module name="hotelRoomBooking" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
