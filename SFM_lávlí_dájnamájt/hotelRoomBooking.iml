@@ -10,15 +10,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11" level="project" />
-    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:11" level="project" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
           <root url="jar://C:/Program Files/Java/mysql-connector-java-8.0.23/mysql-connector-java-8.0.23.jar!/" />
@@ -27,5 +19,13 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-controls:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:11" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:11" level="project" />
   </component>
 </module>
