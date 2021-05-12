@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import static java.lang.Integer.parseInt;
@@ -37,7 +38,95 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private PasswordField textPassword;
 
     @FXML
-    private Button ButtonLogin;
+    private Button ButtonBejelent;
+
+    @FXML
+    private Tab ker;
+
+    @FXML
+    private AnchorPane table_keres;
+
+    @FXML
+    private DatePicker DateErkezes;
+
+    @FXML
+    private DatePicker DateTavozas;
+
+    @FXML
+    private CheckBox CheckErkely;
+
+    @FXML
+    private Button ButtonKeres;
+
+    @FXML
+    private TableColumn<?, ?> TableNev;
+
+    @FXML
+    private TableColumn<?, ?> TableErkez;
+
+    @FXML
+    private TableColumn<?, ?> TableTavoz;
+
+    @FXML
+    private TableColumn<?, ?> TableSzobasz;
+
+    @FXML
+    private TableColumn<?, ?> TableVendegsz;
+
+    @FXML
+    private TableColumn<?, ?> TableFizet;
+
+    @FXML
+    private TextField TextSzobatip;
+
+    @FXML
+    private Tab fog;
+
+    @FXML
+    private TextField TextVeznev;
+
+    @FXML
+    private TextField TextKernev;
+
+    @FXML
+    private TextField TextIranyito;
+
+    @FXML
+    private TextField TextVaros;
+
+    @FXML
+    private TextField TextUtca;
+
+    @FXML
+    private TextField TextHsz;
+
+    @FXML
+    private TextField TextEmail;
+
+    @FXML
+    private DatePicker DateErkez;
+
+    @FXML
+    private DatePicker DateTavoz;
+
+    @FXML
+    private TextField TextSzoba;
+
+    @FXML
+    private TextField TextReci;
+
+    @FXML
+    private Button ButtonVegleg;
+
+    @FXML
+    private Tab fiz;
+
+    @FXML
+    private TextArea TextOsszes;
+
+    @FXML
+    private TextField TextSzobasz;
+
 
     @FXML
     private Label testLabel;
@@ -124,6 +213,17 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private Tab Checkout_tab;
+
+    @FXML
+    private ImageView door;
+
+    @FXML
+    private ImageView csengo;
+
+    
+
+
+
 
     public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(AlertType.CONFIRMATION);
