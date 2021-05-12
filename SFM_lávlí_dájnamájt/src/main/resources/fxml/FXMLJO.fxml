@@ -98,7 +98,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="Reservation_tab" disable="true" text="Foglalás">
+          <Tab fx:id="Reservation_tab" text="Foglalás">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="794.0">
                      <children>
