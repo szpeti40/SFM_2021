@@ -132,6 +132,11 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             testLabel.setText("Rossz felhasznalo név vagy jelszó");
         }*/
     }
+    @FXML
+    void foglalas(ActionEvent event) {
+
+    }
+
 
     /*void handleButtonAction(ActionEvent event) {
 
