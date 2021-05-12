@@ -21,15 +21,66 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     Connection connectionDB = connectToDB();
     Stage dialogStage = new Stage();
+
+    @FXML
+    private Tab Login_tab;
+
     @FXML
     private TextField textAzonosito;
 
     @FXML
     private PasswordField textPassword;
-    @FXML
-    private Label testLabel;
+
     @FXML
     private Button ButtonLogin;
+
+    @FXML
+    private Label testLabel;
+
+    @FXML
+    private Tab Reservation_tab;
+
+    @FXML
+    private DatePicker DateArrive;
+
+    @FXML
+    private DatePicker DateLeave;
+
+    @FXML
+    private Spinner<?> SpinNight;
+
+    @FXML
+    private Spinner<?> SpinRoomType;
+
+    @FXML
+    private Spinner<?> SpinVendeg;
+
+    @FXML
+    private Spinner<?> SpinChild;
+
+    @FXML
+    private TextField SpinRoomNum;
+
+    @FXML
+    private CheckBox CheckErkely;
+
+    @FXML
+    private CheckBox CheckPotagy;
+
+    @FXML
+    private CheckBox CheckReggeli;
+
+    @FXML
+    private CheckBox CheckHalf;
+
+    @FXML
+    private CheckBox CheckFull;
+
+    @FXML
+    private CheckBox CheckClean;
+
+    @FXML
+    private Tab Checkout_tab;
 
     public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -58,6 +109,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             else {
                 testLabel.setText("Sikeres login");
                 infoBox("Sikeres belépés",null,"Siker" );
+                Login_tab.setDisable(true);
+                Reservation_tab.setDisable(false);
+                Checkout_tab.setDisable(false);
 
 
             }
