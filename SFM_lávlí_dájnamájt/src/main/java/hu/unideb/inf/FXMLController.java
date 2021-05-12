@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +19,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
+import static java.lang.Integer.parseInt;
 
 public class FXMLController extends DatabaseConnection implements Initializable  {
 
@@ -37,9 +42,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private Tab ker;
-
-    @FXML
-    private AnchorPane table_keres;
 
     @FXML
     private DatePicker DateErkezes;
@@ -153,9 +155,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private TextField SpinRoomNum;
 
     @FXML
-    private CheckBox CheckErkely;
-
-    @FXML
     private CheckBox CheckPotagy;
 
     @FXML
@@ -170,6 +169,8 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private CheckBox CheckClean;
 
+    @FXML
+    private Button foglalas_button;
 
     @FXML
     private Tab Checkout_tab;
@@ -180,6 +181,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView csengo;
 
+<<<<<<< HEAD
     @FXML
     private TextField TextSzobasz;
 
@@ -201,6 +203,8 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
 
 
+=======
+>>>>>>> 3d620fc6a7014efda956c6d74b95c24cf8581ece
     public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);
@@ -208,12 +212,13 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         alert.setHeaderText(headerText);
         alert.showAndWait();
     }
+    //public String user = textAzonosito.getText().toString();
 
     @FXML
     public void handleButtonLogin(ActionEvent event) {
 
-        String user = textAzonosito.getText().toString();
-        String password = textPassword.getText().toString();
+        String user = textAzonosito.getText();
+        String password = textPassword.getText();
         String sql = "SELECT * FROM receptionist WHERE username = ? and password = ?";
         try {
             PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
@@ -231,8 +236,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
                 Login_tab.setDisable(true);
                 Reservation_tab.setDisable(false);
                 Checkout_tab.setDisable(false);
-
-
             }
 
         }catch (Exception e){
@@ -248,6 +251,48 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             testLabel.setText("Rossz felhasznalo név vagy jelszó");
         }*/
     }
+
+    @FXML
+    void foglalas(ActionEvent event) {
+        String name = TextVeznev.getText() + " " + TextKernev.getText();
+        int postalcode = parseInt(TextIranyito.getText());
+        String address = TextVaros.getText() + " " + TextUtca.getText() + " " + TextHsz.getText();
+        String email = TextEmail.getText();
+        int roomnr = parseInt(TextSzoba.getText());
+        String mettol = DateErkez.getValue().toString();
+        String meddig = DateTavoz.getValue().toString();
+        String recis = TextReci.getText();
+
+        String sql = "INSERT INTO guest (name, postalcode, address, email, r_number, recis, arrival, leaving) " +
+                "VALUES(?,?,?,?,?,?,?,?)";
+        boolean siker = false;
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            preparedStatement.setInt(2, postalcode);
+            preparedStatement.setString(3, address);
+            preparedStatement.setString(4, email);
+            preparedStatement.setInt(5, roomnr);
+            preparedStatement.setString(6, recis);
+            preparedStatement.setString(7, mettol);
+            preparedStatement.setString(8, meddig);
+            siker = preparedStatement.execute();
+            //ResultSet sikeres = preparedStatement.executeQuery(sql);
+            if(siker){
+                infoBox("Hiba a feltöltésben", null, "Hiba");
+            }
+            else {
+                infoBox("A feltöltés sikerült!",null,"Siker" );
+            }
+            //createSQLException
+            //translateException
+
+
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /*void handleButtonAction(ActionEvent event) {
 
