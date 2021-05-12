@@ -20,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
    <children>
-      <TabPane prefHeight="600.0" prefWidth="787.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="8.0" prefHeight="600.0" prefWidth="787.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
             <Tab fx:id="Login_tab" text="Bejelentkezés">
               <content>
@@ -81,7 +81,7 @@
                               </SplitMenuButton>
                               <CheckBox fx:id="CheckErkely" layoutX="383.0" layoutY="65.0" mnemonicParsing="false" text="Erkély" />
                               <CheckBox fx:id="CheckPot" layoutX="291.0" layoutY="66.0" mnemonicParsing="false" text="Pótágy" />
-                              <Button fx:id="ButtonKeres" layoutX="537.0" layoutY="27.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
+                              <Button fx:id="ButtonKeres" layoutX="537.0" layoutY="27.0" mnemonicParsing="false" onAction="#ButtonKeres_handle" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
                               <TableView layoutX="44.0" layoutY="100.0" prefHeight="354.0" prefWidth="754.0">
                                  <columns>
                                     <TableColumn fx:id="TableNev" prefWidth="176.00000762939453" text="Név" />

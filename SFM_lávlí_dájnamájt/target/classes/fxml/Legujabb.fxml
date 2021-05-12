@@ -17,11 +17,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="600.0" prefWidth="787.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab fx:id="Login_tab" text="Bejelentkezés">
+            <Tab text="Bejelentkezés">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="555.0" prefWidth="787.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                      <children>
@@ -43,7 +43,7 @@
                               <Font name="Bell MT" size="24.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textAzonosito" layoutX="518.0" layoutY="245.0" prefHeight="30.0" prefWidth="214.0">
+                        <TextField fx:id="textAzonosito1" layoutX="518.0" layoutY="245.0" prefHeight="30.0" prefWidth="214.0">
                            <font>
                               <Font name="Bell MT" size="15.0" />
                            </font>
@@ -53,12 +53,12 @@
                               <Font name="Bell MT" size="24.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="textPassword" layoutX="520.0" layoutY="317.0" prefHeight="32.0" prefWidth="210.0">
+                        <PasswordField fx:id="textPassword1" layoutX="520.0" layoutY="317.0" prefHeight="32.0" prefWidth="210.0">
                            <font>
                               <Font name="Bell MT" size="15.0" />
                            </font>
                         </PasswordField>
-                        <Button fx:id="ButtonBejelent" layoutX="548.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonLogin" prefHeight="47.0" prefWidth="153.0" text="Bejelentkezés">
+                        <Button fx:id="ButtonBejelent" layoutX="548.0" layoutY="407.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="153.0" text="Bejelentkezés">
                            <font>
                               <Font name="Bell MT" size="18.0" />
                            </font>
@@ -68,12 +68,11 @@
                               <Image url="@door.jpg" />
                            </image>
                         </ImageView>
-                        <Label fx:id="testLabel" layoutX="441.0" layoutY="378.0" />
                      </children>
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab fx:id="Kereses_tab" text="Keresés">
+          <Tab fx:id="ker" text="Keresés">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="619.0" prefWidth="882.0">
                      <children>
@@ -82,7 +81,7 @@
                               <DatePicker fx:id="DateErkezes" layoutX="38.0" layoutY="62.0" promptText="Érkezés napja" />
                               <DatePicker fx:id="DateTavozas" layoutX="236.0" layoutY="62.0" promptText="Távozás napja" />
                               <CheckBox fx:id="CheckErkely" layoutX="490.0" layoutY="66.0" mnemonicParsing="false" text="Erkély" />
-                              <Button fx:id="ButtonKeres" layoutX="650.0" layoutY="37.0" mnemonicParsing="false" onAction="#keresesButton" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
+                              <Button fx:id="ButtonKeres" layoutX="650.0" layoutY="37.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
                               <TableView layoutX="22.0" layoutY="117.0" prefHeight="437.0" prefWidth="755.0">
                                  <columns>
                                     <TableColumn fx:id="TableNev" prefWidth="176.00000762939453" text="Név" />
@@ -105,7 +104,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="Reservation_tab" text="Foglalás">
+          <Tab fx:id="fog" text="Foglalás">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="794.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                      <children>
@@ -203,7 +202,7 @@
                               <Font name="Bell MT" size="36.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ButtonVegleg" layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#foglalas" prefHeight="46.0" prefWidth="199.0" text="Foglalás véglegesítése">
+                        <Button fx:id="ButtonVegleg" layoutX="471.0" layoutY="447.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="199.0" text="Foglalás véglegesítése">
                            <font>
                               <Font name="Bell MT" size="19.0" />
                            </font>
@@ -212,7 +211,7 @@
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab fx:id="Checkout_tab" text="Fizetés">
+            <Tab fx:id="fiz" text="Fizetés">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                      <children>
@@ -228,23 +227,23 @@
                            </font>
                         </Label>
                         <TextField fx:id="TextSzobasz" layoutX="35.0" layoutY="74.0" prefHeight="26.0" prefWidth="101.0" promptText="Szobaszám" />
-                        <Button fx:id="ButtonValaszt" layoutX="143.0" layoutY="73.0" mnemonicParsing="false" onAction="#chooseRoom" text="Választ">
+                        <Button layoutX="143.0" layoutY="73.0" mnemonicParsing="false" text="Választ">
                            <font>
                               <Font name="Bell MT" size="14.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="TextVegossz" layoutX="568.0" layoutY="330.0" prefHeight="45.0" prefWidth="144.0" />
-                        <Button fx:id="ButtonVegossz" layoutX="441.0" layoutY="336.0" mnemonicParsing="false" onAction="#vegosszegButton" prefHeight="30.0" prefWidth="104.0" text="Végösszeg:">
+                        <TextField layoutX="568.0" layoutY="330.0" prefHeight="45.0" prefWidth="144.0" />
+                        <Button layoutX="441.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Végösszeg:">
                            <font>
                               <Font name="Bell MT" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ButtonVegleg" layoutX="563.0" layoutY="422.0" mnemonicParsing="false" onAction="#fizetButton" text="Véglegesít">
+                        <Button layoutX="563.0" layoutY="422.0" mnemonicParsing="false" text="Véglegesít">
                            <font>
                               <Font name="Bell MT" size="27.0" />
                            </font>
                         </Button>
-                        <ImageView fx:id="door2" fitHeight="271.0" fitWidth="409.0" layoutX="354.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="271.0" fitWidth="409.0" layoutX="354.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ajto2.jpg" />
                            </image>

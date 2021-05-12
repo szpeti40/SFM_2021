@@ -174,6 +174,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private Tab Checkout_tab;
+    @FXML
+    private Tab Kereses_tab;
+
 
     @FXML
     private ImageView door;
@@ -181,9 +184,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView csengo;
 
-<<<<<<< HEAD
-    @FXML
-    private TextField TextSzobasz;
 
     @FXML
     private Button ButtonValaszt;
@@ -197,14 +197,10 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView door2;
 
-    @FXML
-    private TextArea TextOsszes;
 
 
 
 
-=======
->>>>>>> 3d620fc6a7014efda956c6d74b95c24cf8581ece
     public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);
@@ -236,6 +232,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
                 Login_tab.setDisable(true);
                 Reservation_tab.setDisable(false);
                 Checkout_tab.setDisable(false);
+                Kereses_tab.setDisable(false);
             }
 
         }catch (Exception e){
@@ -292,6 +289,10 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             e.printStackTrace();
         }
     }
+    @FXML
+    void ButtonKeres_handle(ActionEvent event) {
+
+    }
 
 
     /*void handleButtonAction(ActionEvent event) {
@@ -310,6 +311,25 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         }
 
     }*/
+    @FXML
+    void chooseRoom(ActionEvent event) {
+
+    }
+
+    @FXML
+    void fizetButton(ActionEvent event) {
+
+    }
+
+    @FXML
+    void keresesButton(ActionEvent event) {
+
+    }
+    @FXML
+    void vegosszegButton(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        //bottomLabel.setText("DB connection is on");
