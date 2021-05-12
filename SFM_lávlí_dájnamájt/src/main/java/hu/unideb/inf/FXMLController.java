@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutionException;
 
@@ -45,6 +46,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private Tab ker;
+
+    @FXML
+    private Label Forint;
 
     @FXML
     private DatePicker DateErkezes;
@@ -211,7 +215,45 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     void chooseRoom(ActionEvent event) {
+        int roomnr = parseInt(dropRoom.getValue());
+        String sql = "SELECT * FROM guest WHERE r_number = ?";
+        String sql_room = "SELECT price as ar FROM rooms WHERE ID = ? ";
+        String sql_date = "Select Datediff((SELECT leaving FROM guest WHERE r_number=? ),(SELECT arrival from guest WHERE r_number=?)) as napok";
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            PreparedStatement preparedStatement_room = connectionDB.prepareStatement(sql_room);
+            PreparedStatement preparedStatement_date = connectionDB.prepareStatement(sql_date);
+            preparedStatement.setInt(1, roomnr);
+            preparedStatement_date.setInt(1, roomnr);
+            preparedStatement_date.setInt(2, roomnr);
+            preparedStatement_room.setInt(1, roomnr);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            ResultSet queryOutput_date = preparedStatement_date.executeQuery();
+            ResultSet queryOutput_room = preparedStatement_room.executeQuery();
 
+            List<Integer> napok = new ArrayList<>();
+            while (queryOutput_date.next()){
+                napok.add(queryOutput_date.getInt("napok"));
+            }
+
+            List<Integer> ar = new ArrayList<>();
+            while (queryOutput_room.next()){
+                ar.add(queryOutput_room.getInt("ar"));
+            }
+
+            int szamitott_ar = napok.get(0) * ar.get(0);
+
+            if(!queryOutput.next()){
+                infoBox("Hiba", null, "Hiba");
+            }
+            else {
+                TextOsszes.setText("Név: " + queryOutput.getString(2) + "\n" + "Szobaszám: " + queryOutput.getString(6) + "\nItt töltött napok: " + napok.get(0) + "\nFizetendő összeg: " + szamitott_ar + "ft");
+                Forint.setText(szamitott_ar + "ft");
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     ObservableList<String> list= FXCollections.observableArrayList();
@@ -247,7 +289,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             }
             else {
                 testLabel.setText("Sikeres login");
-                infoBox("Sikeres belépés",null,"Siker" );
+                //infoBox("Sikeres belépés",null,"Siker" );
                 Login_tab.setDisable(true);
                 Reservation_tab.setDisable(false);
                 Checkout_tab.setDisable(false);
@@ -290,6 +332,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         Date date = new Date(System.currentTimeMillis());
         DateErkez.setValue(LocalDate.parse(formatter.format(date)));
     }
+
     @FXML
     void refreshButton_pay(ActionEvent event) {
         list1.clear();
@@ -313,7 +356,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         int postalcode = parseInt(TextIranyito.getText());
         String address = TextVaros.getText() + " " + TextUtca.getText() + " " + TextHsz.getText();
         String email = TextEmail.getText();
-        int roomnr = parseInt(dropRoom2.getValue());//parseInt(TextSzoba.getText());
+        int roomnr = parseInt(dropRoom2.getValue());
         String mettol = DateErkez.getValue().toString();
         String meddig = DateTavoz.getValue().toString();
         String recis = reci_drop.getValue();
@@ -332,16 +375,17 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             preparedStatement.setString(7, mettol);
             preparedStatement.setString(8, meddig);
             siker = preparedStatement.execute();
-            //ResultSet sikeres = preparedStatement.executeQuery(sql);
+
             if(siker){
                 infoBox("Hiba a feltöltésben", null, "Hiba");
             }
             else {
-                infoBox("A feltöltés sikerült!",null,"Siker" );
+                infoBox("A foglalás sikerült!",null,"Siker" );
             }
-            sql = "UPDATE rooms SET free = ? WHERE id = ? ";
-            PreparedStatement asd = connectionDB.prepareStatement(sql);
-            asd.setInt(1, 1);
+
+            String sql_update = "UPDATE rooms SET free = ? WHERE id = ? ";
+            PreparedStatement asd = connectionDB.prepareStatement(sql_update);
+            asd.setInt(1, 0);
             asd.setInt(2, roomnr);
             asd.executeUpdate();
             //createSQLException
@@ -350,7 +394,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             e.printStackTrace();
         }
         TextVeznev.clear();
-        TextVeznev.clear();
+        TextKernev.clear();
         TextIranyito.clear();
         TextVaros.clear();
         TextUtca.clear();
@@ -400,6 +444,8 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         else
             infoBox("Sikertelen fizetés",null,"Info");
 
+        TextOsszes.clear();
+        Forint.setText("");
     }
 
     @FXML

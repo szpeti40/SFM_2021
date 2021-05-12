@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="787.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.unideb.inf.FXMLController">
    <children>
       <TabPane prefHeight="600.0" prefWidth="787.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -73,7 +73,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab fx:id="Kereses_tab" text="Keresés">
+          <Tab fx:id="Kereses_tab" disable="true" text="Keresés">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="619.0" prefWidth="882.0">
                      <children>
@@ -103,7 +103,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="Reservation_tab" text="Foglalás">
+          <Tab fx:id="Reservation_tab" disable="true" text="Foglalás">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="262.0" prefWidth="794.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                      <children>
@@ -199,19 +199,19 @@
                               <Font name="Bell MT" size="36.0" />
                            </font>
                         </Label>
-                        <Button fx:id="ButtonVegleg" layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#foglalas" prefHeight="46.0" prefWidth="199.0" text="Foglalás véglegesítése">
+                        <Button fx:id="ButtonVegleg" layoutX="471.0" layoutY="447.0" mnemonicParsing="false" onAction="#foglalas" prefHeight="46.0" prefWidth="216.0" text="Foglalás véglegesítése">
                            <font>
                               <Font name="Bell MT" size="19.0" />
                            </font>
                         </Button>
                         <ComboBox fx:id="dropRoom2" layoutX="125.0" layoutY="168.0" prefWidth="150.0" promptText="Válassz szobát" />
                         <ComboBox fx:id="reci_drop" layoutX="127.0" layoutY="214.0" prefWidth="150.0" promptText="Válassz recepcióst" />
-                        <Button layoutX="710.0" layoutY="493.0" mnemonicParsing="false" onAction="#refreshButton_fog" text="Refresh" />
+                        <Button layoutX="236.0" layoutY="130.0" mnemonicParsing="false" onAction="#refreshButton_fog" text="Frissítés" />
                      </children>
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab fx:id="Checkout_tab" text="Fizetés">
+            <Tab fx:id="Checkout_tab" disable="true" text="Fizetés">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                      <children>
@@ -231,12 +231,6 @@
                               <Font name="Bell MT" size="14.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="TextVegossz" layoutX="568.0" layoutY="330.0" prefHeight="45.0" prefWidth="144.0" />
-                        <Button fx:id="ButtonVegossz" layoutX="441.0" layoutY="336.0" mnemonicParsing="false" onAction="#vegosszegButton" prefHeight="30.0" prefWidth="104.0" text="Végösszeg:">
-                           <font>
-                              <Font name="Bell MT" size="17.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="ButtonVeglegFiz" layoutX="563.0" layoutY="422.0" mnemonicParsing="false" onAction="#fizetButton" text="Véglegesít">
                            <font>
                               <Font name="Bell MT" size="27.0" />
@@ -248,7 +242,17 @@
                            </image>
                         </ImageView>
                         <ComboBox fx:id="dropRoom" layoutX="35.0" layoutY="76.0" prefWidth="150.0" promptText="Válassz szobát" />
-                        <Button layoutX="697.0" layoutY="494.0" mnemonicParsing="false" onAction="#refreshButton_pay" text="Frissítés" />
+                        <Button layoutX="206.0" layoutY="36.0" mnemonicParsing="false" onAction="#refreshButton_pay" text="Frissítés" />
+                        <Label layoutX="470.0" layoutY="342.0" text="Végösszeg:">
+                           <font>
+                              <Font name="Bell MT" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Forint" layoutX="595.0" layoutY="342.0">
+                           <font>
+                              <Font name="Bell MT" size="25.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
