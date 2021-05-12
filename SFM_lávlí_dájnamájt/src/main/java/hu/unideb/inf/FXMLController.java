@@ -245,6 +245,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
                 Reservation_tab.setDisable(false);
                 Checkout_tab.setDisable(false);
                 Kereses_tab.setDisable(false);
+                SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+                Date date = new Date(System.currentTimeMillis());
+                DateErkez.setValue(LocalDate.parse(formatter.format(date)));
             }
 
         }catch (Exception e){
@@ -275,6 +278,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             throwables.printStackTrace();
         }
         dropRoom2.setItems(list);
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+        DateErkez.setValue(LocalDate.parse(formatter.format(date)));
     }
     @FXML
     void refreshButton_pay(ActionEvent event) {
