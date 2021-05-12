@@ -227,23 +227,23 @@
                            </font>
                         </Label>
                         <TextField fx:id="TextSzobasz" layoutX="35.0" layoutY="74.0" prefHeight="26.0" prefWidth="101.0" promptText="Szobaszám" />
-                        <Button layoutX="143.0" layoutY="73.0" mnemonicParsing="false" text="Választ">
+                        <Button fx:id="ButtonValaszt" layoutX="143.0" layoutY="73.0" mnemonicParsing="false" text="Választ">
                            <font>
                               <Font name="Bell MT" size="14.0" />
                            </font>
                         </Button>
-                        <TextField layoutX="568.0" layoutY="330.0" prefHeight="45.0" prefWidth="144.0" />
-                        <Button layoutX="441.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Végösszeg:">
+                        <TextField fx:id="TextVegossz" layoutX="568.0" layoutY="330.0" prefHeight="45.0" prefWidth="144.0" />
+                        <Button fx:id="ButtonVegossz" layoutX="441.0" layoutY="336.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="104.0" text="Végösszeg:">
                            <font>
                               <Font name="Bell MT" size="17.0" />
                            </font>
                         </Button>
-                        <Button layoutX="563.0" layoutY="422.0" mnemonicParsing="false" text="Véglegesít">
+                        <Button fx:id="ButtonVegleg" layoutX="563.0" layoutY="422.0" mnemonicParsing="false" text="Véglegesít">
                            <font>
                               <Font name="Bell MT" size="27.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="271.0" fitWidth="409.0" layoutX="354.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="door2" fitHeight="271.0" fitWidth="409.0" layoutX="354.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@ajto2.jpg" />
                            </image>

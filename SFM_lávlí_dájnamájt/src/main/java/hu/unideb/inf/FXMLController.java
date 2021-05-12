@@ -180,7 +180,23 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView csengo;
 
-    
+    @FXML
+    private TextField TextSzobasz;
+
+    @FXML
+    private Button ButtonValaszt;
+
+    @FXML
+    private TextField TextVegossz;
+
+    @FXML
+    private Button ButtonVegossz;
+
+    @FXML
+    private ImageView door2;
+
+    @FXML
+    private TextArea TextOsszes;
 
 
 
