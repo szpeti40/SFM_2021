@@ -319,6 +319,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             e.printStackTrace();
         }
         TextVeznev.clear();
+        TextVeznev.clear();
         TextIranyito.clear();
         TextVaros.clear();
         TextUtca.clear();
