@@ -128,6 +128,8 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private Tab Reservation_tab;
+    @FXML
+    private Tab Search_tab;
 
     @FXML
     private DatePicker DateArrive;
@@ -167,6 +169,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private CheckBox CheckClean;
+
 
     @FXML
     private Tab Checkout_tab;
