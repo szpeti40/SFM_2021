@@ -209,6 +209,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private ImageView door2;
 
     ObservableList<String> list= FXCollections.observableArrayList();
+    ObservableList<String> list1= FXCollections.observableArrayList();
     ObservableList<String> recisek= FXCollections.observableArrayList("admin","csvirag","selek");
 
 
@@ -262,11 +263,12 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         else{
             testLabel.setText("Rossz felhasznalo név vagy jelszó");
         }*/
+        reci_drop.setItems(recisek);
     }
 
     @FXML
     void refreshButton_fog(ActionEvent event) {
-        recisek.clear();
+        list.clear();
         String sql = "SELECT id FROM rooms WHERE free=1";
         try {
             PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
@@ -284,18 +286,18 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     }
     @FXML
     void refreshButton_pay(ActionEvent event) {
-        list.clear();
+        list1.clear();
         String sql = "SELECT id FROM rooms WHERE free=0";
         try {
             PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
             ResultSet queryOutput = preparedStatement.executeQuery();
             while(queryOutput.next()){
-                list.add(queryOutput.getString("id"));
+                list1.add(queryOutput.getString("id"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        dropRoom.setItems(list);
+        dropRoom.setItems(list1);
     }
 
 
