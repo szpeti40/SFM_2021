@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="703.0" prefWidth="933.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="623.0">
+         <children>
+            <DatePicker fx:id="DateArrive" layoutX="105.0" layoutY="32.0" prefHeight="25.0" prefWidth="124.0" />
+            <Label layoutX="14.0" layoutY="32.0" prefHeight="25.0" prefWidth="89.0" text="Érkezés napja:">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="DateArrive1" layoutX="105.0" layoutY="84.0" prefHeight="25.0" prefWidth="124.0" />
+            <Label layoutX="14.0" layoutY="86.0" prefHeight="25.0" prefWidth="89.0" text="Távozás napja:">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="SpinNights" layoutX="113.0" layoutY="143.0" prefHeight="25.0" prefWidth="73.0" />
+            <Label layoutX="14.0" layoutY="143.0" prefHeight="25.0" prefWidth="99.0" text="Éjszakák száma:">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="265.0" layoutY="33.0" text="Vendégek száma:">
+               <font>
+                  <Font name="Bell MT" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="263.0" layoutY="90.0" text="Szobatípus:">
+               <font>
+                  <Font name="Bell MT" size="19.0" />
+               </font>
+            </Label>
+            <SplitMenuButton fx:id="SplitSzoba" layoutX="370.0" layoutY="88.0" mnemonicParsing="false" text="Válassz..">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Action 1" />
+                  <MenuItem mnemonicParsing="false" text="Action 2" />
+               </items>
+            </SplitMenuButton>
+            <CheckBox layoutX="263.0" layoutY="146.0" mnemonicParsing="false" text="Pótágy">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="379.0" layoutY="146.0" mnemonicParsing="false" text="Erkély">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </CheckBox>
+            <Button layoutX="742.0" layoutY="27.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="148.0" text="Új foglalás">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="741.0" layoutY="138.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="148.0" text="Foglalás törlése">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="526.0" layoutY="79.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="148.0" text="Keresés">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="742.0" layoutY="84.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="148.0" text="Foglalás módosítása">
+               <font>
+                  <Font name="Bell MT" size="14.0" />
+               </font>
+            </Button>
+            <SplitMenuButton layoutX="406.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Válassz..">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </SplitMenuButton>
+         </children>
+      </Pane>
+      <Pane prefHeight="310.0" prefWidth="934.0">
+         <children>
+            <TableView layoutX="2.0" prefHeight="310.0" prefWidth="933.0">
+              <columns>
+                <TableColumn prefWidth="169.60000306367874" text="Vezetéknév" />
+                <TableColumn prefWidth="129.59999084472656" text="Keresztnév" />
+                  <TableColumn prefWidth="99.20001220703125" text="Érkezési dátum" />
+                  <TableColumn minWidth="0.0" prefWidth="45.60003662109375" text="Fő" />
+                  <TableColumn prefWidth="72.0" text="Pótágy" />
+                  <TableColumn prefWidth="75.99993896484375" text="Erkély" />
+                  <TableColumn prefWidth="114.39990234375" text="Fizetési mód" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</VBox>
