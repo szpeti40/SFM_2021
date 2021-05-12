@@ -81,6 +81,41 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private CheckBox CheckClean;
 
+    @FXML
+    private TextField TextVeznev;
+
+    @FXML
+    private TextField TextKernev;
+
+    @FXML
+    private TextField TextIranyito;
+
+    @FXML
+    private TextField TextVaros;
+
+    @FXML
+    private TextField TextUtca;
+
+    @FXML
+    private TextField TextHsz;
+
+    @FXML
+    private TextField TextEmail;
+
+    @FXML
+    private DatePicker DateErkez;
+
+    @FXML
+    private DatePicker DateTavoz;
+
+    @FXML
+    private TextField TextSzoba;
+
+    @FXML
+    private TextField TextReci;
+
+    @FXML
+    private Button foglalas_button;
 
     @FXML
     private Tab Checkout_tab;
@@ -92,11 +127,12 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         alert.setHeaderText(headerText);
         alert.showAndWait();
     }
+    public String user = textAzonosito.getText().toString();
 
     @FXML
     public void handleButtonLogin(ActionEvent event) {
 
-        String user = textAzonosito.getText().toString();
+        //String user = textAzonosito.getText().toString();
         String password = textPassword.getText().toString();
         String sql = "SELECT * FROM receptionist WHERE username = ? and password = ?";
         try {
@@ -132,8 +168,17 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             testLabel.setText("Rossz felhasznalo név vagy jelszó");
         }*/
     }
+
     @FXML
     void foglalas(ActionEvent event) {
+        String name = TextVeznev.getText().toString() + " " + TextKernev.getText().toString();
+        String postalcode = TextIranyito.getText().toString();
+        String address = TextVaros.getText().toString() + " " + TextUtca.getText().toString() + " " + TextHsz.getText().toString();
+        String email = TextEmail.getText().toString();
+        String roomnr = TextSzoba.getText().toString();
+
+        String sql = "INSERT INTO guest (name, postalcode, address, email, r_number, recis, arrival, leaving) " +
+                "VALUES(?,?,?,?,?,?,?,?)";
 
     }
 
