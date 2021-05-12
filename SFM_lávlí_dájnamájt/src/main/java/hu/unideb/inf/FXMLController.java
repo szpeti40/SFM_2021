@@ -250,19 +250,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         }catch (Exception e){
             e.printStackTrace();
         }
-        sql = "SELECT id FROM rooms WHERE free=1";
-        try {
-            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
-            ResultSet queryOutput = preparedStatement.executeQuery();
-            System.out.println("ittvagyok");
-            while(queryOutput.next()){
-                list.add(queryOutput.getString("id"));
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        dropRoom.setItems(list);
-        dropRoom2.setItems(list);
+
 
         /*oolean res = login(textAzonosito.getText(),textPassword.getText(),connectionDB);
         if (res){
@@ -274,8 +262,34 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     }
 
     @FXML
-    void dropChanged(ActionEvent event) {
-
+    void refreshButton_fog(ActionEvent event) {
+        recisek.clear();
+        String sql = "SELECT id FROM rooms WHERE free=1";
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            while(queryOutput.next()){
+                list.add(queryOutput.getString("id"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        dropRoom2.setItems(list);
+    }
+    @FXML
+    void refreshButton_pay(ActionEvent event) {
+        list.clear();
+        String sql = "SELECT id FROM rooms WHERE free=0";
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            while(queryOutput.next()){
+                list.add(queryOutput.getString("id"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        dropRoom.setItems(list);
     }
 
 
@@ -311,10 +325,13 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             else {
                 infoBox("A feltöltés sikerült!",null,"Siker" );
             }
+            sql = "UPDATE rooms SET free = ? WHERE id = ? ";
+            PreparedStatement asd = connectionDB.prepareStatement(sql);
+            asd.setInt(1, 0);
+            asd.setInt(2, roomnr);
+            asd.executeUpdate();
             //createSQLException
             //translateException
-
-
         }catch (Exception e) {
             e.printStackTrace();
         }

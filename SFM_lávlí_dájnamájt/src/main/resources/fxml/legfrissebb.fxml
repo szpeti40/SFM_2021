@@ -204,8 +204,9 @@
                               <Font name="Bell MT" size="19.0" />
                            </font>
                         </Button>
-                        <ComboBox fx:id="dropRoom2" layoutX="125.0" layoutY="168.0" onAction="#dropChanged" prefWidth="150.0" promptText="Válassz szobát" />
+                        <ComboBox fx:id="dropRoom2" layoutX="125.0" layoutY="168.0" prefWidth="150.0" promptText="Válassz szobát" />
                         <ComboBox fx:id="reci_drop" layoutX="127.0" layoutY="214.0" prefWidth="150.0" promptText="Válassz recepcióst" />
+                        <Button layoutX="710.0" layoutY="493.0" mnemonicParsing="false" onAction="#refreshButton_fog" text="Refresh" />
                      </children>
                   </AnchorPane>
                </content>
@@ -225,8 +226,7 @@
                               <Font name="Bell MT" size="29.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="TextSzobasz" layoutX="35.0" layoutY="74.0" prefHeight="26.0" prefWidth="101.0" promptText="Szobaszám" />
-                        <Button fx:id="ButtonValaszt" layoutX="143.0" layoutY="73.0" mnemonicParsing="false" onAction="#chooseRoom" text="Választ">
+                        <Button fx:id="ButtonValaszt" layoutX="204.0" layoutY="75.0" mnemonicParsing="false" onAction="#chooseRoom" text="Választ">
                            <font>
                               <Font name="Bell MT" size="14.0" />
                            </font>
@@ -237,7 +237,7 @@
                               <Font name="Bell MT" size="17.0" />
                            </font>
                         </Button>
-                        <Button fx:id="ButtonVegleg" layoutX="563.0" layoutY="422.0" mnemonicParsing="false" onAction="#fizetButton" text="Véglegesít">
+                        <Button fx:id="ButtonVeglegFiz" layoutX="563.0" layoutY="422.0" mnemonicParsing="false" onAction="#fizetButton" text="Véglegesít">
                            <font>
                               <Font name="Bell MT" size="27.0" />
                            </font>
@@ -247,7 +247,8 @@
                               <Image url="@ajto2.jpg" />
                            </image>
                         </ImageView>
-                        <ComboBox fx:id="dropRoom" layoutX="154.0" layoutY="30.0" prefWidth="150.0" promptText="Válassz szobát" />
+                        <ComboBox fx:id="dropRoom" layoutX="35.0" layoutY="76.0" prefWidth="150.0" promptText="Válassz szobát" />
+                        <Button layoutX="697.0" layoutY="494.0" mnemonicParsing="false" onAction="#refreshButton_pay" text="Frissítés" />
                      </children>
                   </AnchorPane>
               </content>
