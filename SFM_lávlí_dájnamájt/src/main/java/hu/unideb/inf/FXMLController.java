@@ -472,26 +472,26 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         String sql="";
         int ez=0;
         String nev="";//= nevKER.getText();
-        int szsz=0;// = parseInt(roomKER.getText());
+        int szsz=99;// = parseInt(roomKER.getText());
         if(!roomKER.getText().isEmpty()){
-            sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE r_number=? ";
-            ez=1;
             szsz = parseInt(roomKER.getText());
-
+            sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE r_number='"+szsz+"' ";
+            ez=1;
+            //szsz = parseInt(roomKER.getText());
+            System.out.println("szobaszamos swl fut");
         }
         if(!nevKER.getText().isEmpty()){
+            nev = nevKER.getText();
             sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE name like '%"+nev+"%'";
             ez=2;
-            nev = nevKER.getText();
+            System.out.println("neves swl fut");
+
         }
 
         try {
             PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
-            if(ez==1) {
-                preparedStatement.setInt(1, szsz);
-            }
-
-            ResultSet queryOutput = preparedStatement.executeQuery();
+            System.out.println("nev: "+nev+"   Szoba:  "+szsz+"\n");
+            ResultSet queryOutput = preparedStatement.executeQuery(sql);
             if(!queryOutput.next()){
                 infoBox("Nincs ilyen vendeg", null, "INFO");
             }
