@@ -8,7 +8,7 @@ public class DatabaseConnection {
         String databaseName = "hotel_sfm";
         String databaseUser = "root";
         String databasePassword = "SFM_2021";
-        String url = "jdbc:mysql://szpeter1998.ddns.net:3306/" + databaseName;
+        String url = "jdbc:mysql://szpeter1998.ddns.net:3307/" + databaseName;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
