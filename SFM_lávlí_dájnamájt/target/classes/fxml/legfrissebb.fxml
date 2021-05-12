@@ -74,34 +74,30 @@
               </content>
             </Tab>
           <Tab fx:id="Kereses_tab" disable="true" text="Keresés">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="619.0" prefWidth="882.0">
-                     <children>
-                        <AnchorPane fx:id="table_keres" layoutX="-4.0" layoutY="-1.0" prefHeight="573.0" prefWidth="795.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
-                           <children>
-                              <Button fx:id="ButtonKeres" layoutX="652.0" layoutY="20.0" mnemonicParsing="false" onAction="#keresesButton" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
-                              <TableView layoutX="20.0" layoutY="80.0" prefHeight="437.0" prefWidth="755.0">
-                                 <columns>
-                                    <TableColumn fx:id="TableNev" prefWidth="124.79999351501465" text="Név" />
-                                    <TableColumn fx:id="TableIrany" prefWidth="81.5999755859375" text="Irányítószám" />
-                                    <TableColumn fx:id="TableTavoz" prefWidth="86.4000244140625" text="Cím" />
-                                    <TableColumn fx:id="TableSzobasz" prefWidth="90.4000244140625" text="Email" />
-                                    <TableColumn fx:id="TableVendegsz" prefWidth="86.4000244140625" text="Szobaszám" />
-                                    <TableColumn fx:id="TableFizet" prefWidth="150.39993286132812" text="Érkezés" />
-                                    <TableColumn prefWidth="136.79998779296875" text="Távozás" />
-                                 </columns>
-                              </TableView>
-                              <Label layoutX="38.0" layoutY="2.0" prefHeight="31.0" prefWidth="174.0" text="Keresés" underline="true">
-                                 <font>
-                                    <Font name="Bell MT" size="36.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TextNevker" layoutX="418.0" layoutY="24.0" prefHeight="26.0" prefWidth="207.0" promptText="Név" />
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-            </content>
+             <content>
+             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="619.0" prefWidth="882.0">
+                <children>
+                   <AnchorPane fx:id="table_keres" layoutX="-4.0" prefHeight="573.0" prefWidth="795.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
+                      <children>
+                         <Button fx:id="ButtonKeres" layoutX="642.0" layoutY="37.0" mnemonicParsing="false" onAction="#keresesButton" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
+                         <Label layoutX="14.0" prefHeight="31.0" prefWidth="174.0" text="Keresés" underline="true">
+                            <font>
+                               <Font name="Bell MT" size="36.0" />
+                            </font>
+                         </Label>
+                         <TextField fx:id="nevKER" layoutX="128.0" layoutY="41.0" prefHeight="26.0" prefWidth="207.0" promptText="Név" />
+                         <TextField fx:id="roomKER" layoutX="412.0" layoutY="41.0" prefHeight="26.0" prefWidth="207.0" promptText="Szobaszám" />
+                         <Label layoutX="553.0" layoutY="131.0" text="Szabaszáma" />
+                         <Label layoutX="172.0" layoutY="131.0" text="Vendég neve" />
+                         <Label layoutX="373.0" layoutY="259.0" text="Érk-Táv" />
+                         <TextField fx:id="nevTextBox" editable="false" layoutX="135.0" layoutY="165.0" promptText="Név" />
+                         <TextField fx:id="szabaszamTextBox" editable="false" layoutX="494.0" layoutY="165.0" promptText="Szobaszám" />
+                         <TextField fx:id="erktavBox" editable="false" layoutX="314.0" layoutY="287.0" promptText="Érk-Táv" />
+                      </children>
+                   </AnchorPane>
+                </children>
+             </AnchorPane>
+          </content>
           </Tab>
           <Tab fx:id="Reservation_tab" disable="true" text="Foglalás">
                <content>

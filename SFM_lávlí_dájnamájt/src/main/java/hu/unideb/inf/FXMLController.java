@@ -197,6 +197,20 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ComboBox<String> dropRoom2;
 
+    @FXML
+    private TextField nevKER;
+
+    @FXML
+    private TextField roomKER;
+
+    @FXML
+    private TextField nevTextBox;
+
+    @FXML
+    private TextField szabaszamTextBox;
+
+    @FXML
+    private TextField erktavBox;
 
     @FXML
     private Button ButtonValaszt;
@@ -454,7 +468,44 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     void keresesButton(ActionEvent event) {
+        //String sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE r_number=? ";
+        String sql="";
+        int ez=0;
+        String nev="";//= nevKER.getText();
+        int szsz=0;// = parseInt(roomKER.getText());
+        if(!roomKER.getText().isEmpty()){
+            sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE r_number=? ";
+            ez=1;
+            szsz = parseInt(roomKER.getText());
 
+        }
+        if(!nevKER.getText().isEmpty()){
+            sql = "SELECT name,r_number,arrival,leaving FROM guest WHERE name like '%"+nev+"%'";
+            ez=2;
+            nev = nevKER.getText();
+        }
+
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            if(ez==1) {
+                preparedStatement.setInt(1, szsz);
+            }
+
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            if(!queryOutput.next()){
+                infoBox("Nincs ilyen vendeg", null, "INFO");
+            }
+            else {
+                nevTextBox.setText(queryOutput.getString(1));
+                szabaszamTextBox.setText(queryOutput.getString(2));
+                erktavBox.setText(queryOutput.getString(3)+" - "+queryOutput.getString(4));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        nevKER.clear();
+        roomKER.clear();
     }
     @FXML
     void vegosszegButton(ActionEvent event) {
