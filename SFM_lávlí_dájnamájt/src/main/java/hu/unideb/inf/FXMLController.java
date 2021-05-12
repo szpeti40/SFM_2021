@@ -1,14 +1,16 @@
 package hu.unideb.inf;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -152,6 +154,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private Spinner<?> SpinChild;
 
     @FXML
+    private ComboBox<String> dropRoom;
+
+    @FXML
     private TextField SpinRoomNum;
 
     @FXML
@@ -184,6 +189,9 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView csengo;
 
+    @FXML
+    private ComboBox<String> dropRoom2;
+
 
     @FXML
     private Button ButtonValaszt;
@@ -195,10 +203,13 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private Button ButtonVegossz;
 
     @FXML
+    private ComboBox<String> reci_drop;
+
+    @FXML
     private ImageView door2;
 
-
-
+    ObservableList<String> list= FXCollections.observableArrayList();
+    ObservableList<String> recisek= FXCollections.observableArrayList("admin","csvirag","selek");
 
 
     public static void infoBox(String infoMessage, String headerText, String title){
@@ -210,9 +221,10 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     }
     //public String user = textAzonosito.getText().toString();
 
+
     @FXML
     public void handleButtonLogin(ActionEvent event) {
-
+        reci_drop.setItems(recisek);
         String user = textAzonosito.getText();
         String password = textPassword.getText();
         String sql = "SELECT * FROM receptionist WHERE username = ? and password = ?";
@@ -238,7 +250,19 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         }catch (Exception e){
             e.printStackTrace();
         }
-
+        sql = "SELECT id FROM rooms WHERE free=1";
+        try {
+            PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
+            ResultSet queryOutput = preparedStatement.executeQuery();
+            System.out.println("ittvagyok");
+            while(queryOutput.next()){
+                list.add(queryOutput.getString("id"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        dropRoom.setItems(list);
+        dropRoom2.setItems(list);
 
         /*oolean res = login(textAzonosito.getText(),textPassword.getText(),connectionDB);
         if (res){
@@ -250,15 +274,21 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     }
 
     @FXML
-    void foglalas(ActionEvent event) {
+    void dropChanged(ActionEvent event) {
+
+    }
+
+
+    @FXML
+   public void foglalas(ActionEvent event) {
         String name = TextVeznev.getText() + " " + TextKernev.getText();
         int postalcode = parseInt(TextIranyito.getText());
         String address = TextVaros.getText() + " " + TextUtca.getText() + " " + TextHsz.getText();
         String email = TextEmail.getText();
-        int roomnr = parseInt(TextSzoba.getText());
+        int roomnr = parseInt(dropRoom2.getValue());//parseInt(TextSzoba.getText());
         String mettol = DateErkez.getValue().toString();
         String meddig = DateTavoz.getValue().toString();
-        String recis = TextReci.getText();
+        String recis = reci_drop.getValue();
 
         String sql = "INSERT INTO guest (name, postalcode, address, email, r_number, recis, arrival, leaving) " +
                 "VALUES(?,?,?,?,?,?,?,?)";

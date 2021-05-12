@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -79,18 +79,16 @@
                      <children>
                         <AnchorPane fx:id="table_keres" layoutX="-4.0" layoutY="-1.0" prefHeight="573.0" prefWidth="795.0" style="-fx-background-color: linear-gradient(from 0% 50% to 100% 100%, burlywood  0%, white 100%);">
                            <children>
-                              <DatePicker fx:id="DateErkezes" layoutX="38.0" layoutY="62.0" promptText="Érkezés napja" />
-                              <DatePicker fx:id="DateTavozas" layoutX="236.0" layoutY="62.0" promptText="Távozás napja" />
-                              <CheckBox fx:id="CheckErkely" layoutX="490.0" layoutY="66.0" mnemonicParsing="false" text="Erkély" />
-                              <Button fx:id="ButtonKeres" layoutX="650.0" layoutY="37.0" mnemonicParsing="false" onAction="#keresesButton" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
-                              <TableView layoutX="22.0" layoutY="117.0" prefHeight="437.0" prefWidth="755.0">
+                              <Button fx:id="ButtonKeres" layoutX="652.0" layoutY="20.0" mnemonicParsing="false" onAction="#keresesButton" prefHeight="33.0" prefWidth="113.0" text="Keresés" />
+                              <TableView layoutX="20.0" layoutY="80.0" prefHeight="437.0" prefWidth="755.0">
                                  <columns>
-                                    <TableColumn fx:id="TableNev" prefWidth="176.00000762939453" text="Név" />
-                                    <TableColumn fx:id="TableErkez" prefWidth="106.4000244140625" text="Érkezés" />
-                                    <TableColumn fx:id="TableTavoz" prefWidth="119.199951171875" text="Távozás" />
-                                    <TableColumn fx:id="TableSzobasz" prefWidth="98.39999389648438" text="Szobaszám" />
-                                    <TableColumn fx:id="TableVendegsz" prefWidth="108.800048828125" text="Vendégek száma" />
-                                    <TableColumn fx:id="TableFizet" prefWidth="143.99993896484375" text="Fizetési mód" />
+                                    <TableColumn fx:id="TableNev" prefWidth="124.79999351501465" text="Név" />
+                                    <TableColumn fx:id="TableIrany" prefWidth="81.5999755859375" text="Irányítószám" />
+                                    <TableColumn fx:id="TableTavoz" prefWidth="86.4000244140625" text="Cím" />
+                                    <TableColumn fx:id="TableSzobasz" prefWidth="90.4000244140625" text="Email" />
+                                    <TableColumn fx:id="TableVendegsz" prefWidth="86.4000244140625" text="Szobaszám" />
+                                    <TableColumn fx:id="TableFizet" prefWidth="150.39993286132812" text="Érkezés" />
+                                    <TableColumn prefWidth="136.79998779296875" text="Távozás" />
                                  </columns>
                               </TableView>
                               <Label layoutX="38.0" layoutY="2.0" prefHeight="31.0" prefWidth="174.0" text="Keresés" underline="true">
@@ -98,7 +96,7 @@
                                     <Font name="Bell MT" size="36.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="TextSzobatip" layoutX="442.0" layoutY="18.0" prefHeight="32.0" prefWidth="150.0" promptText="Szobatípus" />
+                              <TextField fx:id="TextNevker" layoutX="418.0" layoutY="24.0" prefHeight="26.0" prefWidth="207.0" promptText="Név" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -191,13 +189,11 @@
                               <Font name="Bell MT" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="TextSzoba" layoutX="129.0" layoutY="169.0" prefHeight="26.0" prefWidth="58.0" />
                         <Label layoutX="25.0" layoutY="214.0" text="Recepciós:">
                            <font>
                               <Font name="Bell MT" size="20.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="TextReci" layoutX="129.0" layoutY="213.0" prefHeight="26.0" prefWidth="186.0" />
                         <Label layoutX="31.0" layoutY="21.0" text="Foglalás" underline="true">
                            <font>
                               <Font name="Bell MT" size="36.0" />
@@ -208,6 +204,8 @@
                               <Font name="Bell MT" size="19.0" />
                            </font>
                         </Button>
+                        <ComboBox fx:id="dropRoom2" layoutX="125.0" layoutY="168.0" onAction="#dropChanged" prefWidth="150.0" promptText="Válassz szobát" />
+                        <ComboBox fx:id="reci_drop" layoutX="127.0" layoutY="214.0" prefWidth="150.0" promptText="Válassz recepcióst" />
                      </children>
                   </AnchorPane>
                </content>
@@ -249,6 +247,7 @@
                               <Image url="@ajto2.jpg" />
                            </image>
                         </ImageView>
+                        <ComboBox fx:id="dropRoom" layoutX="154.0" layoutY="30.0" prefWidth="150.0" promptText="Válassz szobát" />
                      </children>
                   </AnchorPane>
               </content>
