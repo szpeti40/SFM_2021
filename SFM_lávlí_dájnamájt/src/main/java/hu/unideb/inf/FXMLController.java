@@ -318,6 +318,12 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         }catch (Exception e) {
             e.printStackTrace();
         }
+        TextVeznev.clear();
+        TextIranyito.clear();
+        TextVaros.clear();
+        TextUtca.clear();
+        TextHsz.clear();
+        TextEmail.clear();
     }
     @FXML
     void ButtonKeres_handle(ActionEvent event) {
