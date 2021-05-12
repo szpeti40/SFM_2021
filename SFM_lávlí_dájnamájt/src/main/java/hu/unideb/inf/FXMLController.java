@@ -44,9 +44,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private Tab ker;
 
     @FXML
-    private AnchorPane table_keres;
-
-    @FXML
     private DatePicker DateErkezes;
 
     @FXML
@@ -158,9 +155,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private TextField SpinRoomNum;
 
     @FXML
-    private CheckBox CheckErkely;
-
-    @FXML
     private CheckBox CheckPotagy;
 
     @FXML
@@ -176,39 +170,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     private CheckBox CheckClean;
 
     @FXML
-    private TextField TextVeznev;
-
-    @FXML
-    private TextField TextKernev;
-
-    @FXML
-    private TextField TextIranyito;
-
-    @FXML
-    private TextField TextVaros;
-
-    @FXML
-    private TextField TextUtca;
-
-    @FXML
-    private TextField TextHsz;
-
-    @FXML
-    private TextField TextEmail;
-
-    @FXML
-    private DatePicker DateErkez;
-
-    @FXML
-    private DatePicker DateTavoz;
-
-    @FXML
-    private TextField TextSzoba;
-
-    @FXML
-    private TextField TextReci;
-
-    @FXML
     private Button foglalas_button;
 
     @FXML
@@ -219,11 +180,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
 
     @FXML
     private ImageView csengo;
-
-    
-
-
-
 
     public static void infoBox(String infoMessage, String headerText, String title){
         Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -282,7 +238,6 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         String mettol = DateErkez.getValue().toString();
         String meddig = DateTavoz.getValue().toString();
         String recis = TextReci.getText();
-
 
         String sql = "INSERT INTO guest (name, postalcode, address, email, r_number, recis, arrival, leaving) " +
                 "VALUES(?,?,?,?,?,?,?,?)";
