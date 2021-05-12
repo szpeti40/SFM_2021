@@ -66,7 +66,7 @@
                         </Button>
                         <ImageView fx:id="door" fitHeight="331.0" fitWidth="361.0" layoutX="14.0" layoutY="223.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@SFM_lávlí_dájnamájt/src/main/resources/fxml/door.jpg" />
+                              <Image url="@door.jpg" />
                            </image>
                         </ImageView>
                      </children>
@@ -181,7 +181,7 @@
                         </Label>
                         <ImageView fx:id="csengo" fitHeight="298.0" fitWidth="368.0" layoutX="16.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@SFM_lávlí_dájnamájt/src/main/resources/fxml/csengo.jpg" />
+                              <Image url="@csengo.jpg" />
                            </image>
                         </ImageView>
                         <DatePicker fx:id="DateErkez" layoutX="22.0" layoutY="82.0" promptText="Érkezés napja" />
