@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
@@ -208,6 +209,11 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     private ImageView door2;
 
+    @FXML
+    void chooseRoom(ActionEvent event) {
+
+    }
+
     ObservableList<String> list= FXCollections.observableArrayList();
     ObservableList<String> list1= FXCollections.observableArrayList();
     ObservableList<String> recisek= FXCollections.observableArrayList("admin","csvirag","selek");
@@ -335,7 +341,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             }
             sql = "UPDATE rooms SET free = ? WHERE id = ? ";
             PreparedStatement asd = connectionDB.prepareStatement(sql);
-            asd.setInt(1, 0);
+            asd.setInt(1, 1);
             asd.setInt(2, roomnr);
             asd.executeUpdate();
             //createSQLException
@@ -373,13 +379,26 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         }
 
     }*/
-    @FXML
-    void chooseRoom(ActionEvent event) {
-
-    }
 
     @FXML
     void fizetButton(ActionEvent event) {
+        //Select Datediff((SELECT leaving FROM guest WHERE r_number=3 ),(SELECT arrival from guest WHERE r_number=3))
+        String sql = "UPDATE rooms SET free = ? WHERE id = ? ";
+        int siker = 0;
+        try {
+            PreparedStatement asd = connectionDB.prepareStatement(sql);
+            asd.setInt(1, 1);
+            asd.setInt(2, parseInt(dropRoom.getValue()));
+            siker=asd.executeUpdate();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+        if (siker==1){
+            infoBox("Sikeres fizetés a szoba újra szabad",null,"Info");
+        }
+        else
+            infoBox("Sikertelen fizetés",null,"Info");
 
     }
 
