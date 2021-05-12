@@ -427,13 +427,17 @@ public class FXMLController extends DatabaseConnection implements Initializable 
     @FXML
     void fizetButton(ActionEvent event) {
         //Select Datediff((SELECT leaving FROM guest WHERE r_number=3 ),(SELECT arrival from guest WHERE r_number=3))
+        String sql_update = "UPDATE guest SET r_number = 0 WHERE r_number = ?;";
         String sql = "UPDATE rooms SET free = ? WHERE id = ? ";
         int siker = 0;
         try {
             PreparedStatement asd = connectionDB.prepareStatement(sql);
+            PreparedStatement update_guest = connectionDB.prepareStatement(sql_update);
             asd.setInt(1, 1);
             asd.setInt(2, parseInt(dropRoom.getValue()));
+            update_guest.setInt(1, parseInt(dropRoom.getValue()));
             siker=asd.executeUpdate();
+            siker=update_guest.executeUpdate();
         }
         catch (SQLException e){
             e.printStackTrace();
