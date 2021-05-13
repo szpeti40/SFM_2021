@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +25,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import static java.lang.Integer.compare;
 import static java.lang.Integer.parseInt;
 
 public class FXMLController extends DatabaseConnection implements Initializable  {
@@ -232,11 +234,16 @@ public class FXMLController extends DatabaseConnection implements Initializable 
         int roomnr = parseInt(dropRoom.getValue());
         String sql = "SELECT * FROM guest WHERE r_number = ?";
         String sql_room = "SELECT price as ar FROM rooms WHERE ID = ? ";
+        String sql_sooner = "SELECT leaving FROM guest where r_number='"+roomnr+"'";
         String sql_date = "Select Datediff((SELECT leaving FROM guest WHERE r_number=? ),(SELECT arrival from guest WHERE r_number=?)) as napok";
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+        LocalDate today = LocalDate.parse(formatter.format(date));
         try {
             PreparedStatement preparedStatement = connectionDB.prepareStatement(sql);
             PreparedStatement preparedStatement_room = connectionDB.prepareStatement(sql_room);
             PreparedStatement preparedStatement_date = connectionDB.prepareStatement(sql_date);
+            PreparedStatement preparedStatement_sooner = connectionDB.prepareStatement(sql_sooner);
             preparedStatement.setInt(1, roomnr);
             preparedStatement_date.setInt(1, roomnr);
             preparedStatement_date.setInt(2, roomnr);
@@ -244,6 +251,7 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             ResultSet queryOutput = preparedStatement.executeQuery();
             ResultSet queryOutput_date = preparedStatement_date.executeQuery();
             ResultSet queryOutput_room = preparedStatement_room.executeQuery();
+            ResultSet queryOutput_sooner = preparedStatement_sooner.executeQuery();
 
             List<Integer> napok = new ArrayList<>();
             while (queryOutput_date.next()){
@@ -253,6 +261,23 @@ public class FXMLController extends DatabaseConnection implements Initializable 
             List<Integer> ar = new ArrayList<>();
             while (queryOutput_room.next()){
                 ar.add(queryOutput_room.getInt("ar"));
+            }
+            List<Date> date_leaving = new ArrayList<>();
+            while (queryOutput_sooner.next()){
+                date_leaving.add(queryOutput_sooner.getDate("leaving"));
+            }
+            int ered = date.compareTo(date_leaving.get(0));
+            if(ered<0){
+                System.out.println("többet fizetett"+date_leaving.get(0)+"  "+today);
+                String sql_date_jo = "Select Datediff(('"+today+"'),(SELECT arrival FROM guest WHERE r_number=? )) as napok";
+                PreparedStatement preparedStatement_date_jo = connectionDB.prepareStatement(sql_date_jo);
+                preparedStatement_date_jo.setInt(1, roomnr);
+                ResultSet queryOutput_date_jo = preparedStatement_date_jo.executeQuery();
+                List<Integer> napok_jo = new ArrayList<>();
+                while (queryOutput_date_jo.next()){
+                    napok_jo.add(queryOutput_date_jo.getInt("napok"));
+                }
+                napok.set(0,napok_jo.get(0));
             }
 
             int szamitott_ar = napok.get(0) * ar.get(0);

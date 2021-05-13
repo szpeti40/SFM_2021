@@ -15,9 +15,10 @@ public class MainApp extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/legfrissebb.fxml"));
         Scene scene = new Scene(root);
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Lovely Dinamite Low Budget Hotel Managment App");
         stage.setScene(scene);
         stage.show();
+
     }
 
     /**
